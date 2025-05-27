@@ -37,8 +37,33 @@ public class BlogService {
 
         return BlogDtoS;
     }
+    public void add(BlogDto blogDto){
+        BlogEntity blogEntity = new BlogEntity();
+
+        blogEntity.setId(blogDto.getId());
+        blogEntity.setTitle(blogDto.getTitle());
+        blogEntity.setContent(blogDto.getContent());
+        blogEntity.setTags(DeformatTags((blogDto.getTags())));
+        blogEntity.setCategory(blogDto.getCategory());
+        blogEntity.setComments_count(blogDto.getComments_count());
+        blogEntity.setCreatedAt(blogDto.getCreatedAt());
+        blogEntity.setUpdated_at(blogDto.getUpdated_at());
+        blogEntity.setImage_url(blogDto.getImage_url());
+
+        blogRepository.save(blogEntity);
+    }
     private List<String> formatTags(String tags) {
         List<String> Tags = List.of(tags.split(","));
+        return Tags;
+    }
+    private String DeformatTags(List<String> tags) {
+        String Tags = "" ;
+        for (int i = 0; i < tags.size(); i++) {
+            if (i > 0) {
+                Tags += ",";
+            }
+            Tags += tags.get(i);
+        }
         return Tags;
     }
 
