@@ -1,5 +1,8 @@
 package edu.icet.ecom.model.entity;
 
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,11 +17,13 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "blog_posts")
+@Entity
 public class BlogEntity {
+    @Id
     private int id;
     private String title ;
     private String content ;
-    private List<String> tags;
+    private String tags;
     private String category ;
     private int comments_count;
     private LocalDateTime createdAt;
