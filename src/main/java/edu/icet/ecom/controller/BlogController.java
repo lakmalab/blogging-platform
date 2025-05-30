@@ -15,7 +15,12 @@ public class BlogController {
 
     @GetMapping
     public List<BlogDto> getAll(){
+        System.out.println("fer");
         return blogService.getAll();
+    }
+    @GetMapping("/get/{id}")
+    public List<BlogDto> getbyID(@PathVariable int id){
+        return blogService.getbyID(id);
     }
     @PostMapping("/add")
     public void add(@RequestBody BlogDto blogDto) {

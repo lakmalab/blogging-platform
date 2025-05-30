@@ -88,4 +88,29 @@ public class BlogService {
     public void delete(int id) {
         blogRepository.deleteById(id);
     }
+
+    public List<BlogDto> getbyID(int id) {
+
+        List<BlogEntity> blogEntities = blogRepository.findAll();
+        List<BlogDto> BlogDtoS = new ArrayList<>();
+
+        for(BlogEntity BlogEntity: blogEntities){
+            if (BlogEntity.getId() == id) {
+                BlogDto BlogDto = new BlogDto();
+                BlogDto.setId(BlogEntity.getId());
+                BlogDto.setTitle(BlogEntity.getTitle());
+                BlogDto.setContent(BlogEntity.getContent());
+                BlogDto.setTags(formatTags((BlogEntity.getTags())));
+                BlogDto.setCategory(BlogEntity.getCategory());
+                BlogDto.setComments_count(BlogEntity.getComments_count());
+                BlogDto.setCreatedAt(BlogEntity.getCreatedAt());
+                BlogDto.setUpdated_at(BlogEntity.getUpdated_at());
+                BlogDto.setImage_url(BlogEntity.getImage_url());
+                BlogDtoS.add(BlogDto);
+            }
+        }
+
+        return BlogDtoS;
+
+    }
 }
