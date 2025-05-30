@@ -6,6 +6,7 @@ import edu.icet.ecom.repository.BlogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -46,8 +47,8 @@ public class BlogService {
         blogEntity.setTags(DeformatTags((blogDto.getTags())));
         blogEntity.setCategory(blogDto.getCategory());
         blogEntity.setComments_count(blogDto.getComments_count());
-        blogEntity.setCreatedAt(blogDto.getCreatedAt());
-        blogEntity.setUpdated_at(blogDto.getUpdated_at());
+        blogEntity.setCreatedAt(LocalDateTime.now());
+        blogEntity.setUpdated_at(LocalDateTime.now());
         blogEntity.setImage_url(blogDto.getImage_url());
 
         blogRepository.save(blogEntity);
@@ -76,8 +77,8 @@ public class BlogService {
             blogEntity.setTags(DeformatTags((blogDto.getTags())));
             blogEntity.setCategory(blogDto.getCategory());
             blogEntity.setComments_count(blogDto.getComments_count());
-            blogEntity.setCreatedAt(blogDto.getCreatedAt());
-            blogEntity.setUpdated_at(blogDto.getUpdated_at());
+
+            blogEntity.setUpdated_at(LocalDateTime.now());
             blogEntity.setImage_url(blogDto.getImage_url());
 
             blogRepository.save(blogEntity);
