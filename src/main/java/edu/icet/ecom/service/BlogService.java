@@ -41,7 +41,6 @@ public class BlogService {
     public void add(BlogDto blogDto){
         BlogEntity blogEntity = new BlogEntity();
 
-        blogEntity.setId(blogDto.getId());
         blogEntity.setTitle(blogDto.getTitle());
         blogEntity.setContent(blogDto.getContent());
         blogEntity.setTags(DeformatTags((blogDto.getTags())));
