@@ -1,8 +1,10 @@
 package edu.icet.ecom.repository;
 
 import edu.icet.ecom.model.entity.BlogEntity;
+import edu.icet.ecom.model.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface BlogRepository extends JpaRepository<BlogEntity,Integer> {
+public interface UserRepository extends JpaRepository<UserEntity,Integer> {
+
 }
 
